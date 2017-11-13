@@ -1,6 +1,6 @@
 require 'rest-client'
 require 'json'
-require 'pry'
+# require 'pry'
 
 # require_relative '../app/models/drink.rb'
 # require_relative '../app/models/ingredient.rb'
@@ -17,3 +17,5 @@ def get_photo_ids
   end
   photo_ids
 end
+
+get_photo_ids

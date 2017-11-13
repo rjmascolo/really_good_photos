@@ -1,0 +1,2 @@
+class Usersphoto < ApplicationRecord
+end

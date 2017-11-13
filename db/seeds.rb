@@ -24,6 +24,3 @@ def get_photos
 end
 
 get_photos
-
-# https://api.500px.com/v1/photos/search?rpp=100&geo=%2040.704266%2C%20-74.013670%2C10000&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e
-# https://api.500px.com/v1/photos/{id}?image_size=4&comments=1&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e

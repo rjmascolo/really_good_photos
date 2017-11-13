@@ -7,14 +7,14 @@ require 'json'
 # require_relative '../app/models/recipe.rb'
 
 def get_photo_ids
-  raw_data = RestClient.get('https://api.500px.com/v1/photos?feature=popular')
+
+  raw_data = RestClient.get('https://api.500px.com/v1/photos/search?image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e')
   category_data = JSON.parse(raw_data)
-  base_url = 'https://api.500px.com/v1/photos/'
-  byebug
   photo_ids = []
   category_data['photos'].each do |category|
     photo_ids << (base_url + category['id']+'?')
   end
+  byebug
   photo_ids
 end
 

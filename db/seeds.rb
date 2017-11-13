@@ -19,7 +19,7 @@ def get_photos
   category_data['photos'].each do |category|
     photos << category
   end
-  byebug
+  # byebug
   photos
 end
 

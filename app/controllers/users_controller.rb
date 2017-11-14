@@ -6,8 +6,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # byebug
-
     if @user.save
       session[:user_id] = @user_id
       flash[:notice] = "You are logged in!"
@@ -18,8 +16,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @user = User.find(session[:user_id])
+    @photos = @user.photos
+  end
+
   def show
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
     @photos = @user.get_photos
   end
 

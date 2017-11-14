@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'static#index'
+
   get 'sessions/destroy'
 
   resources :photos

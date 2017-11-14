@@ -6,19 +6,21 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    byebug
+
+    if @user.save && valid?
       session[:user_id] = @user_id
       flash[:notice] = "You are logged in!"
       redirect_to :show
     else
       flash[:notice] = "Not a valid user! Please log in."
-      redirect_to :new
+      render :new
     end
   end
 
   def show
     @user = User.find(params[:id])
-    @photos = @user.get_photos
+    #@photos = @user.get_photos
   end
 
   private

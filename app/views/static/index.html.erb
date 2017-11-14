@@ -1,11 +1,11 @@
 <div class="form-group container">
   <div class="col-sm sign-up">
   <h1>Please Login</h1>
-  <%= form_for @user do |f|  %>
+  <%= form_for @user, url: login_path do |f|  %>
     <%= f.label :email, "Email", class:"col-form-label"  %> <br>
     <%= f.text_field :email, class:"form-control" %> <br>
     <%= f.label :password, "Passsword"  %> <br>
     <%= f.password_field :password , class:"form-control" %> <br>
-    <%= f.submit class:"btn btn-primary" %>
+    <%= f.submit "Login", class:"btn btn-primary" %>
   <% end %>
-  <h3><%= link_to user_path_</h3>
+<h3><%= link_to "Or, create a new account", new_user_path%></h3>

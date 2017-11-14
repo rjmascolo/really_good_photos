@@ -1,6 +1,6 @@
 class StaticController < ApplicationController
 
-  def login
+  def index
     @user = User.new
   end
 

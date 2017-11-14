@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'static#index'
-
+  post 'login', to: "sessions#create", as: 'login'
   get 'sessions/destroy'
 
   resources :photos

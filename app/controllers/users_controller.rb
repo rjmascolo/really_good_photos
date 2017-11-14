@@ -6,10 +6,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3ebcad5a6d58a5a8a8f2397edf0ae01601f6df7d
     if @user.save
       session[:user_id] = @user_id
       flash[:notice] = "You are logged in!"
-      render :show
+      redirect_to photos_path
     else
       flash[:notice] = "Not a valid user! Please log in."
       render :new
@@ -23,6 +27,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
+<<<<<<< HEAD
+    @photos = @user.get_photos
+=======
+>>>>>>> 3ebcad5a6d58a5a8a8f2397edf0ae01601f6df7d
   end
 
   private

@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20171113183150) do
     t.float "latitude"
     t.string "taken_at"
     t.integer "category_id"
+    t.string "category_name"
     t.string "location"
     t.string "rating"
     t.string "image_url"
@@ -37,7 +38,7 @@ ActiveRecord::Schema.define(version: 20171113183150) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.string "home_location"
     t.float "latitude"
     t.float "longitude"

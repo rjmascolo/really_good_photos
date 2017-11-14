@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to :show
     else
       flash[:notice] = "Not a valid user! Please log in."
-      redirect_to :new
+      render :new
     end
   end
 

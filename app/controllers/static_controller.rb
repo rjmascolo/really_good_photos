@@ -1,6 +1,6 @@
 class StaticController < ApplicationController
 
-  def home
+  def login
     @user = User.new
   end
 

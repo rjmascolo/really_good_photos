@@ -27,7 +27,6 @@ class User < ApplicationRecord
         rating: category['rating'],
         image_url: category['image_url'])
     end
-    byebug
     photos_array
   end
 

@@ -1,3 +1,66 @@
+<<<<<<< HEAD:db/seeds.rb
+=======
+# # This file should contain all the record creation needed to seed the database with its default values.
+# # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# #
+# # Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+# require 'rest-client'
+# require 'json'
+
+
+def get_photos
+  longitude = '40.6872'
+  latitude = '-73.9418'
+  base_url = 'https://api.500px.com/v1/photos/search?rpp=100&geo=' + longitude + ',' + latitude + ',5km&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e'
+  raw_data = RestClient.get(base_url)
+  category_data = JSON.parse(raw_data)
+  photos_array = []
+  category_data['photos'].each do |category|
+    photos_array << category
+  end
+  # byebug
+  photos_array
+end
+
+def get_photo_info
+  photos = get_photos
+  photo_infos = []
+  photos.each do |photo|
+    photo_info = {}
+    photo_info['photo_id'] = photo['id']
+    photo_info['name'] = photo['name']
+    photo_info['description'] = photo['description']
+    photo_info['category_id'] = photo['category'].to_i
+    photo_info['taken_at'] = photo['taken_at']
+    photo_info['location'] = photo['location']
+    photo_info['latitude'] = photo['latitude']
+    photo_info['longitude'] = photo['longitude']
+    photo_info['rating'] = photo['rating']
+    photo_info['image_url'] = photo['image_url']
+    photo_infos << photo_info
+  end
+  # byebug
+  photo_infos
+end
+
+
+def create_photos
+  photo_info = get_photo_info
+  photo_info.each do |photo|
+     new_photo = Photo.new(photo)
+     new_photo.save
+     # byebug
+  end
+end
+
+create_photos
+
+
+# Category seeding
+>>>>>>> e5bcac9e28a6b9fccee426d1d753c504b76c93ea:db/seeds.rb
 Category.create(category_id: '0', name: 'Uncategorized')
 Category.create(category_id: '1', name: 'Celebrities')
 Category.create(category_id: '2', name: 'Film')
@@ -28,6 +91,7 @@ Category.create(category_id:'26', name: 'Trasportation')
 Category.create(category_id:'27', name: 'Urban Exploration')
 Category.create(category_id:'29', name: 'Arial')
 Category.create(category_id:'30', name: 'Night')
+<<<<<<< HEAD:db/seeds.rb
 
 # def get_photos
 #   longitude = '40.6872'
@@ -74,3 +138,5 @@ Category.create(category_id:'30', name: 'Night')
 #   end
 # end
 # create_photos
+=======
+>>>>>>> e5bcac9e28a6b9fccee426d1d753c504b76c93ea:db/seeds.rb

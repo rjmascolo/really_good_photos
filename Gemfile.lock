@@ -41,6 +41,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
+    bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.1.0)
@@ -67,6 +68,7 @@ GEM
     erubi (1.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
+    geocoder (1.4.4)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
@@ -190,9 +192,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  geocoder
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.7)

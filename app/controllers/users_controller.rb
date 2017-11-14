@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    #@photos = @user.get_photos
+    @photos = @user.get_photos
   end
 
   private

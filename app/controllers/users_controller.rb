@@ -17,8 +17,8 @@ class UsersController < ApplicationController
   end
 
   def index
+    byebug
     @user = User.find(session[:user_id])
-    @photos = @user.photos
   end
 
   def show

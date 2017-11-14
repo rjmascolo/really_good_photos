@@ -54,9 +54,30 @@
 #   end
 # end
 #
-# create_photos
+# x = create_photos
 
+def get_photos_seed
+  longitude = '40.6872'
+  latitude = '-73.9418'
+  base_url = 'https://api.500px.com/v1/photos/search?rpp=100&geo=' + longitude + ',' + latitude + ',5km&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e'
+  category_data = JSON.parse(RestClient.get(base_url))
+  photos_array = []
+  category_data['photos'].each do |category|
+    photos_array << Photo.find_or_create_by(photo_id: category['id'],
+      name: category['name'],
+      description: category['description'],
+      longitude: category['longitude'],
+      latitude: category['latitude'],
+      taken_at: category['taken_at'],
+      category_id: category['category'].to_i,
+      location: category['location'],
+      rating: category['rating'],
+      image_url: category['image_url'])
+  end
+  photos_array
+end
 
+# Category seeding
 Category.create(category_id: '0', name: 'Uncategorized')
 Category.create(category_id: '1', name: 'Celebrities')
 Category.create(category_id: '2', name: 'Film')
@@ -87,3 +108,5 @@ Category.create(category_id:'26', name: 'Trasportation')
 Category.create(category_id:'27', name: 'Urban Exploration')
 Category.create(category_id:'29', name: 'Arial')
 Category.create(category_id:'30', name: 'Night')
+
+data = get_photos_seed

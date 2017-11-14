@@ -1,0 +1,4 @@
+<h1><%= @user.name %></h1> <br>
+<% @user.photos.each do |photo| %>
+  <img src="<%= photo.image_url %>" alt=""> <br>
+<% end %>

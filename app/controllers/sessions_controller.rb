@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:user][:email])
     if @user.authenticate(params[:user][:password])
 
-      session[:user_id] = @user_id
+      session[:user_id] = @user.id
       redirect_to photos_path
     else
       flash.now[:notice] = "Oops! It looks like the email and/or password you entered is incorrect. Please try again!"

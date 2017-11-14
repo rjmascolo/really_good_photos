@@ -6,10 +6,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-<<<<<<< HEAD
-=======
-
->>>>>>> 3ebcad5a6d58a5a8a8f2397edf0ae01601f6df7d
     if @user.save
       session[:user_id] = @user_id
       flash[:notice] = "You are logged in!"
@@ -21,16 +17,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    byebug
     @user = User.find(session[:user_id])
   end
 
   def show
     @user = User.find(session[:user_id])
-<<<<<<< HEAD
     @photos = @user.get_photos
-=======
->>>>>>> 3ebcad5a6d58a5a8a8f2397edf0ae01601f6df7d
   end
 
   private

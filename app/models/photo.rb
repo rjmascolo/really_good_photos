@@ -1,6 +1,6 @@
 class Photo < ApplicationRecord
   has_many :usersphoto
-  has_many :users, through: :usersphoto
+  has_many :users
   belongs_to :category
 
   def self.fetch_long_n_lat_for_city_state(city_and_state)

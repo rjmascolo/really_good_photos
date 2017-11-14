@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
-    @photos = @user.get_photos
+    @photos = @user.create_photos
   end
 
   private

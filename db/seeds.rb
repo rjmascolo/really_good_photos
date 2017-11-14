@@ -31,7 +31,8 @@ def get_photo_info
     photo_info['photo_id'] = photo['id']
     photo_info['name'] = photo['name']
     photo_info['description'] = photo['description']
-    photo_info['category'] = photo['category']
+    photo_info['category_id'] = photo['category'].to_i
+    photo_info['category_name'] = create_categories(photo)
     photo_info['taken_at'] = photo['taken_at']
     photo_info['location'] = photo['location']
     photo_info['latitude'] = photo['latitude']
@@ -55,3 +56,70 @@ def create_photos
 end
 
 create_photos
+
+def create_categories(photo)
+  case photo['category']
+  when '0'
+    'Uncategorized'
+  when '1'
+    'Celebrities'
+  when '2'
+    'Film'
+  when '3'
+    'Journalism'
+  when '4'
+    'Nude'
+  when '5'
+    'Black and White'
+  when '6'
+    'Still Life'
+  when '7'
+    'People'
+  when '8'
+    'Landscape'
+  when '9'
+    'City and Architecture'
+  when '10'
+    'Abstract'
+  when '11'
+    'Animals'
+  when '12'
+    'Macro'
+  when '13'
+    'Travel'
+  when '14'
+    'Fashion'
+  when '15'
+    'Commercial'
+  when '16'
+    'Concert'
+  when '17'
+    'Sport'
+  when '18'
+    'Nature'
+  when '19'
+    'Performing Arts'
+  when '20'
+    'Family'
+  when '21'
+    'Street'
+  when '22'
+    'Underwater'
+  when '23'
+    'Food'
+  when '24'
+    'Fine Art'
+  when '25'
+    'Wedding'
+  when '26'
+    'Trasportation'
+  when '27'
+    'Urban Exploration'
+  when '29'
+    'Arial'
+  when '30'
+    'Night'
+  end
+end
+
+create_categories

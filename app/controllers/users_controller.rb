@@ -6,12 +6,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    byebug
+    # byebug
 
-    if @user.save && valid?
+    if @user.save
       session[:user_id] = @user_id
       flash[:notice] = "You are logged in!"
-      redirect_to :show
+      render :show
     else
       flash[:notice] = "Not a valid user! Please log in."
       render :new

@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20171113183150) do
     t.float "latitude"
     t.string "taken_at"
     t.integer "category_id"
+    t.string "category_name"
     t.string "location"
     t.string "rating"
     t.string "image_url"

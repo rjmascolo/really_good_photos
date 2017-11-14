@@ -7,7 +7,7 @@ class CreatePhotos < ActiveRecord::Migration[5.1]
       t.float :longitude
       t.float :latitude
       t.string :taken_at
-      t.string :category
+      t.integer :category_id
       t.string :location
       t.string :rating
       t.string :image_url

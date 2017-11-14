@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(version: 20171113183150) do
   end
 
   create_table "photos", force: :cascade do |t|
-<<<<<<< HEAD
-    t.string "name"
-    t.integer "photo_id"
-    t.string "location"
-    t.float "longitude"
-    t.float "latitude"
-    t.integer "category_id"
-=======
     t.integer "photo_id"
     t.string "name"
     t.string "description"
@@ -38,7 +30,6 @@ ActiveRecord::Schema.define(version: 20171113183150) do
     t.string "location"
     t.string "rating"
     t.string "image_url"
->>>>>>> 486029c3046f2116f26228c0a850e3480b736ccd
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,11 +39,8 @@ ActiveRecord::Schema.define(version: 20171113183150) do
     t.string "email"
     t.string "password"
     t.string "home_location"
-<<<<<<< HEAD
-    t.float "latitude", default: 1.0
-    t.float "longitude", default: 1.0
-=======
->>>>>>> 486029c3046f2116f26228c0a850e3480b736ccd
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

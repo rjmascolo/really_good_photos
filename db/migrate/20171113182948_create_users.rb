@@ -5,8 +5,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :password
       t.string :home_location
-      t.float :latitude, :default => true
-      t.float :longitude, :default => true
+      t.float :latitude, :default => nil
+      t.float :longitude, :default => nil
 
       t.timestamps
     end

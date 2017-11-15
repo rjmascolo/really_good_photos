@@ -38,7 +38,8 @@
       <% if session[:user_id] %>
         <a class="btn btn-outline-danger my-2 my-sm-0" href="/sessions/destroy">Logout</a>
       <% else %>
-        <a class="btn btn-outline-danger my-2 my-sm-0" href="/users/new">Sign Up</a>
+        <a class="btn btn-outline-primary my-2 my-sm-0" href="/" style="margin-right:1em">Log In</a>
+        <a class="btn btn-outline-success my-2 my-sm-0" href="/users/new">Sign Up</a>
       <% end %>
       </div>
     </nav>

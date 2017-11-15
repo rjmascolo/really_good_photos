@@ -2,11 +2,11 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-3">Your Saved Photos</h1>
-    <p class="lead">Below are all of your saved photos.</p>
+    <p class="lead">Below are all of your saved photos, <%= @user.name %>.</p>
   </div>
 </div>
 <div class="container">
-  <% if @user.photos %>
+  <% if @user.photos.count > 0 %>
     <% @user.photos.each do |photo| %>
       <div class="card" style="width: 20rem;">
         <img class="card-img-top" src="<%= photo.image_url %>" alt="<%= photo.name %>">
@@ -20,5 +20,9 @@
         </div>
       </div>
     <% end %>
+  <% else %>
+    <div class="alert alert-primary" role="alert">
+      You don't have any photos saved yet. <a href="'/photos'"> Look at your local photos</a> and save them.
+    </div>
   <% end %>
 </div>

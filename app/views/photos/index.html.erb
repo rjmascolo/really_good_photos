@@ -1,6 +1,6 @@
 
   <div class="row">
-  <% @photos[0..3].each do |photo| %>
+  <% @photos.each do |photo| %>
     <div class="col-sm">
       <div class="card" style="width: 20rem;">
         <img class="card-img-top" src="<%= photo["image_url"] %>" alt="Card image cap">

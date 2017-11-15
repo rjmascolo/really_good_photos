@@ -1,7 +1,12 @@
+<div class="jumbotron jumbotron-fluid" style="padding:10px 10px">
+  <div class="container">
+    <h1 class="display-3">Sign Up</h1>
+    <p class="lead">Create an account and check out some great photography in your area</p>
+  </div>
+</div>
 
 <div class="form-group container">
   <div class="col-sm sign-up">
-  <h1>Sign Up</h1>
   <%= form_for @user do |f|  %>
     <%= f.label :name, "Name", class:"col-form-label" %> <br>
     <%= f.text_field :name, class:"form-control" %> <br>

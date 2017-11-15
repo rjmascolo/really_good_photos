@@ -8,7 +8,9 @@ class UsersphotosController < ApplicationController
   end
 
   def show
-    byebug
     @user = current_user
+    @photo = Photo.find(params[:id])
+    @user_photo = Usersphoto.create(user_id: @user.id, photo_id: @photo.photo_id)
+    byebug
   end
 end

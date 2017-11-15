@@ -33,7 +33,9 @@
           <a class="nav-link" href="#">My Area</a>
         </li>
       </ul>
-      <a class="btn btn-outline-danger my-2 my-sm-0" href="#">Logout</a>
+      <% if session[:user_id] %>
+        <a class="btn btn-outline-danger my-2 my-sm-0" href="#">Logout</a>
+      <% end %>
       </div>
     </nav>
     <%= yield %>

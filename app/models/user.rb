@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :usersphoto
-  has_many :photos
+  has_many :photos, through: :usersphoto
 
   has_secure_password
 
@@ -32,6 +32,7 @@ class User < ApplicationRecord
   # end
   # https://api.500px.com/v1/photos/search?geo=40.0149856,-105.2705456,5km&rpp100&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e
   # https://api.500px.com/v1/photos/search?geo=51.5048413,-0.0728062,5km&rpp100&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e
+
   def get_photos
     # longitude = '40.6872'
     # latitude = '-73.9418'
@@ -67,12 +68,10 @@ class User < ApplicationRecord
     photo_infos
   end
 
-
   def create_photos
     photo_info = get_photo_info
     photo_info.each do |photo|
        new_photo = Photo.new(photo)
-       # byebug
        new_photo.save
     end
   end

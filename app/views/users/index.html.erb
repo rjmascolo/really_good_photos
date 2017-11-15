@@ -1,4 +1,22 @@
-<h1><%= @user.name %></h1> <br>
-<% @user.photos.each do |photo| %>
-  <img src="<%= photo.image_url %>" alt=""> <br>
-<% end %>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Your Saved Photos</h1>
+    <p class="lead">Below are all of your saved photos.</p>
+  </div>
+</div>
+<div class="container">
+  <% @user.photos.each do |photo| %>
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" src="<%= photo.image_url %>" alt="<%= photo.name %>">
+      <div class="card-body">
+        <h4 class="card-title"><%= photo.name %></h4>
+        <p class="card-text"><%= photo.description %></p>
+      </div>
+      <div class="card-body">
+        <a href="#" class="card-link">See Photo</a>
+        <a href="#" class="btn btn-danger" style="float: right;">Unsave</a>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -6,7 +6,7 @@
   </div>
 </div>
 <div class="container">
-  <% @user.photos.each do |photo| %>
+  <%= @user.photos.each do |photo| %>
     <div class="card" style="width: 20rem;">
       <img class="card-img-top" src="<%= photo.image_url %>" alt="<%= photo.name %>">
       <div class="card-body">

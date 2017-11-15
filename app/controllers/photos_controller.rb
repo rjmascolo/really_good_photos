@@ -1,18 +1,12 @@
 class PhotosController < ApplicationController
 
   def index
-<<<<<<< HEAD
-    # byebug
-    @user = User.find_by(id: session[:user_id])
-    @photos = @user.get_photos
-=======
     if !session[:user_id]
       redirect_to root_path
     else
       @user = User.find_by(id: session[:user_id])
       @photos = @user.get_photo_info
     end
->>>>>>> 49332bd984fffeabb1ebc235782e9c1bd6fa278e
   end
 
   def show

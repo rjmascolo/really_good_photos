@@ -1,7 +1,18 @@
-<h2>Photo page! <%= @photo.name %></h2>
 
-<div class="row align-items-center">
-  <div class="col-12 col-md-3">  <iframe src="http://maps.google.com/maps?q=<%= @photo.latitude %>, <%= @photo.longitude %>&output=embed" width="270" height="360" frameborder="0" style="border:0"></iframe></div>
-
-  <div class="col-6 col-md-">  <img class="card-img-top" src="<%= @photo.image_url %>" alt="<%= @photo.name %>"></div>
+</div>
+<div class="container">
+<div class="row" style="margin-top: 50px">
+  <div class="col-8"> <a href="<%= @photo.image_url %>"> <img class="card-img-top" src="<%= @photo.image_url %>" alt="<%= @photo.name %>"></a> </div>
+  <div class="col-sm">
+    <div class="card" style="padding-top: 20px">
+      <div class="mx-auto" style="">
+        <iframe src="http://maps.google.com/maps?q=<%= @photo.latitude %>, <%= @photo.longitude %>&output=embed" width="270" height="310" frameborder="0" style="border:0"></iframe>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Photo Title:</h3>
+        <p class="card-text">"<%= @photo.name %>"</p>
+          <%= link_to "Favorite this photo", usersphoto_path(@photo) %>
+      </div>
+    </div>
+</div>
 </div>

@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
     if !session[:user_id]
       redirect_to root_path
     else
-    # @user = User.find_by(id: session[:user_id])
+      @user = User.find_by(id: session[:user_id])
       @photo = Photo.find(params[:id])
     end
     #code

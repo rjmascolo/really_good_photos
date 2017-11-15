@@ -9,10 +9,8 @@ class User < ApplicationRecord
   validates :email, uniqueness:true
   validates :password, length: { minimum: 7 }
 
-
-
   def logged_in?
-    if session[:user_id]
+    if !session[:user_id]
       redirect_to root_path
     end
   end
@@ -37,8 +35,6 @@ class User < ApplicationRecord
   #   # byebug
   #   photos_array
   # end
-  # https://api.500px.com/v1/photos/search?geo=40.0149856,-105.2705456,5km&rpp100&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e
-  # https://api.500px.com/v1/photos/search?geo=51.5048413,-0.0728062,5km&rpp100&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e
 
   def get_photos
     # longitude = '40.6872'
@@ -50,29 +46,32 @@ class User < ApplicationRecord
     category_data['photos'].each do |category|
       photos_array << category
     end
-    # byebug
     photos_array
   end
 
   def get_photo_info
     photos = get_photos
-    photo_infos = []
-    photos.each do |photo|
-      photo_info = {}
-      photo_info['photo_id'] = photo['id']
-      photo_info['name'] = photo['name']
-      photo_info['description'] = photo['description']
-      photo_info['category_id'] = photo['category'].to_i
-      photo_info['taken_at'] = photo['taken_at']
-      photo_info['location'] = photo['location']
-      photo_info['latitude'] = photo['latitude']
-      photo_info['longitude'] = photo['longitude']
-      photo_info['rating'] = photo['rating']
-      photo_info['image_url'] = photo['image_url']
-      photo_infos << photo_info
+    final = photos.map do |photo|
+      photo_info = Photo.find_or_create_by(photo_id: photo['id'])
+      photo_info.name = photo['name']
+      photo_info.description = photo['description']
+      photo_info.category_id = photo['category'].to_i
+      photo_info.taken_at = photo['taken_at']
+      photo_info.location = photo['location']
+      photo_info.latitude = photo['latitude']
+      photo_info.longitude = photo['longitude']
+      photo_info.rating = photo['rating']
+      photo_info.image_url = photo['image_url']
+      photo_info.save
+      photo_info
     end
-    # byebug
-    photo_infos
   end
-
+  # def create_photos
+  #   photo_info = get_photo_info
+  #   byebug
+  #   photo_info.each do |photo|
+  #      new_photo = Photo.create(photo)
+  #      new_photo
+  #   end
+  # end
 end

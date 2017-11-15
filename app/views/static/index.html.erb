@@ -1,15 +1,40 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-3">Log In</h1>
-    <p class="lead">Login to your account below. If you dont have an account. <a href="/users/new">Sign up for one here.</a></p>
+<div class="login" style=
+    "width: 30%;
+    float: right;
+    background: gainsboro;
+    position:relative;
+    margin-top: 5em;
+    margin-right: .5em;
+    z-index: 10;"
+>
+  <h2 style="padding-top: .5em;text-align: center;font-family: 'Pacifico', cursive;">Login</h2>
+  <div class="form-group container">
+    <div class="col-sm sign-up">
+    <%= form_for @user, url: login_path do |f|  %>
+      <%= f.label :email, "Email", class:"col-form-label"  %> <br>
+      <%= f.text_field :email, class:"form-control" %> <br>
+      <%= f.label :password, "Passsword"  %> <br>
+      <%= f.password_field :password , class:"form-control" %> <br>
+      <% if flash.now[:notice] %>
+        <div class="alert alert-danger" role="alert">
+          <%= flash.now[:notice] %>
+        </div>
+        <% end %>
+      <%= f.submit "Login", class:"btn btn-primary btn-lg btn-block" %>
+    <% end %>
+    </div>
   </div>
 </div>
-<div class="form-group container">
-  <div class="col-sm sign-up">
-  <%= form_for @user, url: login_path do |f|  %>
-    <%= f.label :email, "Email", class:"col-form-label"  %> <br>
-    <%= f.text_field :email, class:"form-control" %> <br>
-    <%= f.label :password, "Passsword"  %> <br>
-    <%= f.password_field :password , class:"form-control" %> <br>
-    <%= f.submit "Login", class:"btn btn-primary" %>
-  <% end %>
+<div style="
+  position:absolute;">
+  <img class="d-block w-100" src="https://drscdn.500px.org/photo/113898659/m%3D1080_k%3D1_a%3D1/v2?client_application_id=44697&we
+bp=true&sig=bf1fc2408dc2205ceef50e6151614940c278d36cc0a3d76e6919193f33e98564" alt="Second slide" style="opacity: 0.8">
+</div>
+<div style="margin: 7em 0 0 .5em;
+  z-index: 10;
+  position:relative;">
+  <h1 style="
+    font-family: 'Pacifico', cursive;
+    ">Welcome to Really Good Photos</h1>
+    <p>Login to your right or sign up for an account</p>
+</div>

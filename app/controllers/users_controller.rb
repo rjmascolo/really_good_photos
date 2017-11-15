@@ -7,8 +7,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user_id
+      session[:user_id] = @user.id
       flash[:notice] = "You are logged in!"
+      # byebug
       redirect_to photos_path
     else
       flash[:notice] = "Not a valid user! Please log in."
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
-    @photos = @user.create_photos
+    @photos = @user.get_photo_info
   end
 
   private

@@ -7,4 +7,13 @@ class Photo < ApplicationRecord
     Geocoder.coordinates(city_and_state)
   end
 
+  def create_photos
+    photo_info = get_photo_info
+    photo_info.each do |photo|
+       new_photo = Photo.new(photo)
+       # byebug
+       new_photo.save
+    end
+  end
+  
 end

@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
 
   def logged_in?
-    if session[:user_id]
+    if !session[:user_id]
       redirect_to root_path
     end
   end

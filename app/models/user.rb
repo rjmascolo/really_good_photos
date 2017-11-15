@@ -10,6 +10,38 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 7 }
 
 
+<<<<<<< HEAD
+=======
+  def logged_in?
+    if session[:user_id]
+      redirect_to root_path
+    end
+  end
+
+  # # ryan = User.new(name:"Ryan Mascolo", email:"rjmascolo@gmail.com", password:"heatherwood", home_location:"bedstuy,ny")
+  # def get_photos
+  #   base_url = 'https://api.500px.com/v1/photos/search?rpp=100&geo=' + self.longitude.to_s + ',' + self.latitude.to_s + ',5km&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e'
+  #   category_data = JSON.parse(RestClient.get(base_url))
+  #   photos_array = []
+  #   category_data['photos'].each do |category|
+  #     photos_array << Photo.find_or_create_by(photo_id: category['id'],
+  #       name: category['name'],
+  #       description: category['description'],
+  #       longitude: category['longitude'],
+  #       latitude: category['latitude'],
+  #       taken_at: category['taken_at'],
+  #       category_id: category['category'].to_i,
+  #       location: category['location'],
+  #       rating: category['rating'],
+  #       image_url: category['image_url'])
+  #   end
+  #   # byebug
+  #   photos_array
+  # end
+  # https://api.500px.com/v1/photos/search?geo=40.0149856,-105.2705456,5km&rpp100&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e
+  # https://api.500px.com/v1/photos/search?geo=51.5048413,-0.0728062,5km&rpp100&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e
+
+>>>>>>> d40e040c0f68bba0a3f67f1e9e91bc88ca47e111
   def get_photos
     # longitude = '40.6872'
     # latitude = '-73.9418'

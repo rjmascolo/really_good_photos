@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
     else
       flash.now[:notice] = "Oops! It looks like the email and/or password you entered is incorrect. Please try again!"
       @user = User.new
-      render 'static/home'
+      
+      render 'static/index'
     end
   end
 

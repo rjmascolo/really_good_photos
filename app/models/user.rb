@@ -9,8 +9,6 @@ class User < ApplicationRecord
   validates :email, uniqueness:true
   validates :password, length: { minimum: 7 }
 
-<<<<<<< HEAD
-=======
   def logged_in?
     if !session[:user_id]
       redirect_to root_path
@@ -37,9 +35,6 @@ class User < ApplicationRecord
   #   # byebug
   #   photos_array
   # end
-  # https://api.500px.com/v1/photos/search?geo=40.0149856,-105.2705456,5km&rpp100&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e
-  # https://api.500px.com/v1/photos/search?geo=51.5048413,-0.0728062,5km&rpp100&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e
->>>>>>> 7f1d9931245118468b8a65fd2f64464ca88fd61d
 
   def get_photos
     # longitude = '40.6872'
@@ -68,7 +63,7 @@ class User < ApplicationRecord
       photo_info.rating = photo['rating']
       photo_info.image_url = photo['image_url']
       photo_info.save
-      photo_info 
+      photo_info
     end
   end
   # def create_photos

@@ -15,9 +15,14 @@
       <%= f.text_field :email, class:"form-control" %> <br>
       <%= f.label :password, "Passsword"  %> <br>
       <%= f.password_field :password , class:"form-control" %> <br>
-      <%= f.submit "Login", class:"btn btn-primary" %>
+      <% if flash.now[:notice] %>
+        <div class="alert alert-danger" role="alert">
+          <%= flash.now[:notice] %>
+        </div>
+        <% end %>
+      <%= f.submit "Login", class:"btn btn-primary btn-lg btn-block" %>
     <% end %>
-  </div>
+    </div>
   </div>
 </div>
 <div style="
@@ -31,5 +36,5 @@ bp=true&sig=bf1fc2408dc2205ceef50e6151614940c278d36cc0a3d76e6919193f33e98564" al
   <h1 style="
     font-family: 'Pacifico', cursive;
     ">Welcome to Really Good Photos</h1>
-    <p>Login to your right our sign up for an account</p>
+    <p>Login to your right or sign up for an account</p>
 </div>

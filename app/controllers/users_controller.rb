@@ -29,6 +29,13 @@ class UsersController < ApplicationController
     @photos = @user.get
   end
 
+  def delete(user_id, photo_id)
+    user = User.find(user_id)
+    photo = @user.photos.find(photo_id)
+    user.photos.destroy(user.id, photo.photo_id)
+    redirect_to root_path
+  end
+
   private
 
   def user_params

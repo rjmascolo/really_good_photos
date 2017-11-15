@@ -1,7 +1,9 @@
-
-<br>
-<div class='pixels-photo'>
-  <p>
-    <img src='https://drscdn.500px.org/photo/74907515/m%3D1080_k%3D1_a%3D1/v2?client_application_id=44697&webp=true&sig=08e0d172e3906123e3a68fa90aafd2de2b0a8540e51e1a9f977d7cd23ab6d996' class='rounded mx-auto d-block' alt=''>
-  </p>
+<h2>Photo page! <%= @photo.name %></h2>
+<div class="row">
+  <div class="col">
+    <iframe src="http://maps.google.com/maps?q=<%= @photo.latitude %>, <%= @photo.longitude %>&output=embed" width="360" height="270" frameborder="0" style="border:0"></iframe>
+  </div>
+  <div class="col">
+    <img class="card-img-top" src="<%= @photo.image_url %>" alt="<%= @photo.name %>">
+  </div>
 </div>

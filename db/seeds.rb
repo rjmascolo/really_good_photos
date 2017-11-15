@@ -28,7 +28,7 @@ Category.create(category_id:'26', name: 'Trasportation')
 Category.create(category_id:'27', name: 'Urban Exploration')
 Category.create(category_id:'29', name: 'Arial')
 Category.create(category_id:'30', name: 'Night')
-# rPhoto.destroy_all
+# Photo.destroy_all
 #
 # def get_photos
 #   longitude = '40.6872'

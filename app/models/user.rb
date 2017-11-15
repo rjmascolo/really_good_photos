@@ -10,6 +10,12 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 7 }
 
 
+  def logged_in?
+    if session[:user_id]
+      redirect_to root_path
+    end
+  end
+
   # # ryan = User.new(name:"Ryan Mascolo", email:"rjmascolo@gmail.com", password:"heatherwood", home_location:"bedstuy,ny")
   # def get_photos
   #   base_url = 'https://api.500px.com/v1/photos/search?rpp=100&geo=' + self.longitude.to_s + ',' + self.latitude.to_s + ',5km&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e'

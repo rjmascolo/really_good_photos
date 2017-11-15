@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :usersphoto
-  has_many :photos
+  has_many :photos, through: :usersphoto
 
   has_secure_password
 

@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "You are logged in!"
-      byebug
       redirect_to photos_path
     else
       flash[:notice] = "Not a valid user! Please log in."

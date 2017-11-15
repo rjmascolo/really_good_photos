@@ -2,21 +2,27 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-3">Your Saved Photos</h1>
-    <p class="lead">Below are all of your saved photos.</p>
+    <p class="lead">Below are all of your saved photos, <%= @user.name %>.</p>
   </div>
 </div>
 <div class="container">
-  <% @user.photos.each do |photo| %>
-    <div class="card" style="width: 20rem;">
-      <img class="card-img-top" src="<%= photo.image_url %>" alt="<%= photo.name %>">
-      <div class="card-body">
-        <h4 class="card-title"><%= photo.name %></h4>
-        <p class="card-text"><%= photo.description %></p>
+  <% if @user.photos.count > 0 %>
+    <% @user.photos.each do |photo| %>
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="<%= photo.image_url %>" alt="<%= photo.name %>">
+        <div class="card-body">
+          <h4 class="card-title"><%= photo.name %></h4>
+          <p class="card-text"><%= photo.description %></p>
+        </div>
+        <div class="card-body">
+          <a href="#" class="card-link">See Photo</a>
+          <a href="#" class="btn btn-danger" style="float: right;">Unsave</a>
+        </div>
       </div>
-      <div class="card-body">
-        <a href="#" class="card-link">See Photo</a>
-        <a href="#" class="btn btn-danger" style="float: right;">Unsave</a>
-      </div>
+    <% end %>
+  <% else %>
+    <div class="alert alert-primary" role="alert">
+      You don't have any photos saved yet. <a href="'/photos'"> Look at your local photos</a> and save them.
     </div>
   <% end %>
 </div>

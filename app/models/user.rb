@@ -16,8 +16,7 @@ class User < ApplicationRecord
   end
 
   def get_photos
-    # longitude = '40.6872'
-    # latitude = '-73.9418'
+
     base_url = 'https://api.500px.com/v1/photos/search?geo=' + self.latitude.to_s + ',' + self.longitude.to_s + ',5km&rpp100&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e'
     raw_data = RestClient.get(base_url)
     category_data = JSON.parse(raw_data)
@@ -45,12 +44,5 @@ class User < ApplicationRecord
       photo_info
     end
   end
-  # def create_photos
-  #   photo_info = get_photo_info
-  #   byebug
-  #   photo_info.each do |photo|
-  #      new_photo = Photo.create(photo)
-  #      new_photo
-  #   end
-  # end
+
 end

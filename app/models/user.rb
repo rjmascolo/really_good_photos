@@ -15,6 +15,8 @@ class User < ApplicationRecord
     end
   end
 
+<<<<<<< HEAD
+=======
   # # ryan = User.new(name:"Ryan Mascolo", email:"rjmascolo@gmail.com", password:"heatherwood", home_location:"bedstuy,ny")
   # def get_photos
   #   base_url = 'https://api.500px.com/v1/photos/search?rpp=100&geo=' + self.longitude.to_s + ',' + self.latitude.to_s + ',5km&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e'
@@ -36,6 +38,7 @@ class User < ApplicationRecord
   #   photos_array
   # end
 
+>>>>>>> 49332bd984fffeabb1ebc235782e9c1bd6fa278e
   def get_photos
     # longitude = '40.6872'
     # latitude = '-73.9418'

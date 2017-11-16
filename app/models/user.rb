@@ -21,13 +21,14 @@ class User < ApplicationRecord
   category_data = JSON.parse(RestClient.get(base_url))
   photos_array = []
   category_data['photos'].each do |category|
+    c = Category.find_by(category_id: category['category'])
     photos_array << Photo.find_or_create_by(photo_id: category['id'],
       name: category['name'],
       description: category['description'],
       longitude: category['longitude'],
       latitude: category['latitude'],
       taken_at: category['taken_at'],
-      category_id: category['category'].to_i,
+      category: c,
       location: category['location'],
       rating: category['rating'],
       image_url: category['image_url'])

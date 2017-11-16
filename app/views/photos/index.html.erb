@@ -1,12 +1,14 @@
 <div class="jumbotron jumbotron-fluid"
   <div class="container">
     <h1 class="display-3">Photos in your area</h1>
-    <p class="lead">These are all of the photos taken in your area, <%= params[:q] ? params[:q] : @user.home_location %>.</p>
-    <%= form_tag("/photos", method: "get") do %>
-    <%= label_tag(:q, "Search for:") %>
-    <%= text_field_tag(:q) %>
-    <%= submit_tag("Search") %>
-    <% end %>
+    <div class="form-group container">
+      <%= form_tag("/photos", {method: "get", class:"foobar"})do %>
+      <%= label_tag(:q, "Search a different area:") %> <br>
+      <%= text_field_tag(:q)  %>
+      <%= submit_tag("Search", class:"btn btn-primary")  %>
+      <% end %>
+    </div>
+    <p class="lead">These are all of the photos taken in <%= params[:q] ? params[:q] : "in your area, #{@user.home_location}" %>.</p>
   </div>
 </div>
 
@@ -24,7 +26,7 @@
 
         </div>
         <div class="card-body">
-          <%= link_to("See Photo", photo_path(photo), class: "card-link") %>
+
         </div>
       </div>
     </div>

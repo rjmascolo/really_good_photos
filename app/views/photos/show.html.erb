@@ -1,28 +1,27 @@
+  <div class="container">
+    <div class="row" style="margin-top: 50px">
+      <div class="col-8"> <a href="<%= @photo.image_url %>"> <img class="card-img-top" src="<%= @photo.image_url %>" alt="<%= @photo.name %>"></a> </div>
+        <div class="col-4 ">
+          <div class="card sticky-top" style="padding-top: 20px">
+            <div class="card-body">
+              <h3 class="card-title">Photo Title:</h3>
+              <h5 class="card-text">"<%= @photo.name %>"</h5>
+                <div class="card-body">
+                  <h4 class="card-title">Description:</h4>
+                  <p class="card-text"><%= @photo.description %></p>
+                </div>
+                <div class="mx-auto" >
+                  <iframe src="http://maps.google.com/maps?q=<%= @photo.latitude %>, <%= @photo.longitude %>&output=embed" width="270" height="310" frameborder="0" style="border:0"></iframe>
+                </div>
+                <br>
 
-</div>
-<div class="container">
-<div class="row" style="margin-top: 50px">
-  <div class="col-8"> <a href="<%= @photo.image_url %>"> <img class="card-img-top" src="<%= @photo.image_url %>" alt="<%= @photo.name %>"></a> </div>
-  <div class="col-4">
-    <div class="card" style="padding-top: 20px">
-      <div class="card-body">
-        <h3 class="card-title">Photo Title:</h3>
-        <h5 class="card-text">"<%= @photo.name %>"</h5>
-        <div class="card-body">
-          <h4 class="card-title">Description:</h4>
-          <p class="card-text"><%= @photo.description %></p>
-        </div>
-          <div class="mx-auto" style="">
-            <iframe src="http://maps.google.com/maps?q=<%= @photo.latitude %>, <%= @photo.longitude %>&output=embed" width="270" height="310" frameborder="0" style="border:0"></iframe>
+            <% if !@user.photos.include?(@photo) %>
+              <%= link_to "Save this photo", usersphoto_path(@photo), class:"btn btn-primary"%>
+            <% else %>
+              <%= "You already saved this photo!" %>
+            <% end %>
           </div>
-           <br>
-
-          <% if !@user.photos.include?(@photo) %>
-            <%= link_to "Save this photo", usersphoto_path(@photo) %>
-          <% else %>
-            <%= "You already saved this photo!" %>
-          <% end %>
+        </div>
       </div>
     </div>
-</div>
-</div>
+  </div>

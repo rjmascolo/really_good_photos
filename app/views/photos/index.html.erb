@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid"
   <div class="container">
     <h1 class="display-3">Photos in your area</h1>
-    <p class="lead">These are all of the photos taken in your area, <%= @user.home_location %>.</p>
+    <p class="lead">These are all of the photos taken in your area, <%= params[:q] ? params[:q] : @user.home_location %>.</p>
   </div>
 </div>
 
@@ -26,7 +26,7 @@
           <li class="list-group-item">Vestibulum at eros</li>
         </ul>
         <div class="card-body">
-          <%= link_to "photo link", photo_path(photo) %>
+          
           <a href="#" class="card-link">Another link</a>
         </div>
       </div>

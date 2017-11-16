@@ -1,14 +1,20 @@
-<div class="jumbotron jumbotron-fluid"
-  <div class="container">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container" >
     <h1 class="display-3">Photos in your area</h1>
-    <div class="form-group container">
-      <%= form_tag("/photos", {method: "get", class:"foobar"})do %>
-      <%= label_tag(:q, "Search a different area:") %> <br>
-      <%= text_field_tag(:q)  %>
-      <%= submit_tag("Search", class:"btn btn-primary")  %>
-      <% end %>
+    <p class="lead">These are all of the photos taken in your area, <%= params[:q] ? params[:q] : @user.home_location %>.</p>
+    <%= form_tag("/photos", method: "get") do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search")%>
+    <% end %>
+    <p class="lead">Categories</p>
+    <div class="row" style="margin-top: 20px">
+      <div class="col col-sm-auto">
+        <% @category_name_array.each do |name| %>
+        <button class="btn btn-primary" type="submit"><%= name %></button>
+        <% end %>
+      </div>
     </div>
-    <p class="lead">These are all of the photos taken in <%= params[:q] ? params[:q] : "in your area, #{@user.home_location}" %>.</p>
   </div>
 </div>
 
@@ -22,15 +28,20 @@
           <div class="card-body">
             <h4 class="card-title"><%=photo.name%></h4>
           </div>
-
         </div>
         <div class="card-body">
-          <%= link_to("See Photo", photo_path(photo), class: "card-link") %>
+<<<<<<< HEAD
+          <%# byebug %>
+          <%= link_to "See Photo", photo_url(photo), class: "card-link" %>
+=======
+
+>>>>>>> c6249856f83f7337acaa931539be442d1899ce5d
         </div>
       </div>
     </div>
     <%end%>
-
+  </div>
+</div>
 
   <!-- <nav aria-label="Page navigation example">
     <ul class="pagination">

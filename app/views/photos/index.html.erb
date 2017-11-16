@@ -2,6 +2,11 @@
   <div class="container">
     <h1 class="display-3">Photos in your area</h1>
     <p class="lead">These are all of the photos taken in your area, <%= params[:q] ? params[:q] : @user.home_location %>.</p>
+    <%= form_tag("/photos", method: "get") do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+    <% end %>
   </div>
 </div>
 
@@ -16,11 +21,6 @@
             <h4 class="card-title"><%=photo.name%></h4>
           </div>
 
-<%= form_tag("/photos", method: "get") do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
 
         </div>
         <div class="card-body">

@@ -1,4 +1,9 @@
-
+<div class="jumbotron jumbotron-fluid"
+  <div class="container">
+    <h1 class="display-3">Photos in your area</h1>
+    <p class="lead">These are all of the photos taken in your area, <%= @user.home_location %>.</p>
+  </div>
+</div>
   <div class="row">
   <% @photos[0..3].each do |photo| %>
     <div class="col-sm">

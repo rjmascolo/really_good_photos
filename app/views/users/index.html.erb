@@ -18,8 +18,7 @@
           </div>
         </div>
         <div class="card-body">
-          <p><%= link_to "photo link", photo_path(photo) %></p>
-          <a href="#" class="card-link">See Photo</a>
+          <%= link_to "See Photo", photo_path(photo) %>
           <a href="#" class="btn btn-danger" style="float: right;">Unsave</a>
         </div>
       </div>
@@ -27,6 +26,6 @@
     <% end %>
   <% else %>
     <div class="alert alert-primary" role="alert">
-      You don't have any photos saved yet. <a href="'/photos'"> Look at your local photos</a> and save them.
+      You don't have any photos saved yet. <a href='/photos'> Look at your local photos</a> and save them.
     </div>
   <% end %>

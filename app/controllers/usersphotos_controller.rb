@@ -10,7 +10,7 @@ class UsersphotosController < ApplicationController
   def show
     @user = current_user
     @photo = Photo.find(params[:id])
-    @user.photo << @poto
+    @user.photos << @photo
     redirect_to users_url
   end
 

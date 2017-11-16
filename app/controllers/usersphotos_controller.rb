@@ -14,4 +14,13 @@ class UsersphotosController < ApplicationController
     redirect_to users_url
   end
 
+  def destroy
+    @user = current_user
+    @photo = Photo.find(params[:id])
+    userphoto = Usersphoto.find_by(user_id: @user.id, photo_id: @photo.id)
+    userphoto.destroy
+    redirect_to users_url
+  end
+
+
 end

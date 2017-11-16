@@ -1,15 +1,19 @@
 class PhotosController < ApplicationController
-
+  
   def index
     if !session[:user_id]
       redirect_to root_path
     else
       @user = User.find_by(id: session[:user_id])
       if params[:q]
-        byebug
-        @photos = Geocoder
+        location = Geocoder.search(params[:q])
+        coordinates = location[0].data["geometry"]["location"]
+        @photos = @user.get_photos(coordinates["lng"], coordinates["lat"])
+        @category_name_array = @photos.map{|photo| photo.category.name}.uniq
       else
-        @photos = @user.get_photo_info
+        # byebug
+        @photos = @user.get_photos(@user.longitude,@user.latitude)
+        @category_name_array = @photos.map{|photo| photo.category.name}.uniq
       end
     end
   end
@@ -21,7 +25,6 @@ class PhotosController < ApplicationController
       @user = User.find_by(id: session[:user_id])
       @photo = Photo.find(params[:id])
     end
-    #code
   end
 
   private
@@ -29,4 +32,7 @@ class PhotosController < ApplicationController
     params.require(:photo).permit(:name, :description, :longitude, :latitude, :taken_at, :category_id, :location, :rating, :image_url)
   end
 
+  def set_page
+    @page = params[:page] || 0
+  end
 end

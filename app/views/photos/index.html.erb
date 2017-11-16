@@ -1,3 +1,23 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container" >
+    <h1 class="display-3">Photos in your area</h1>
+    <p class="lead">These are all of the photos taken in your area, <%= params[:q] ? params[:q] : @user.home_location %>.</p>
+    <%= form_tag("/photos", method: "get") do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search")%>
+    <% end %>
+    <p class="lead">Categories</p>
+    <div class="row" style="margin-top: 20px">
+      <div class="col col-sm-auto">
+        <% @category_name_array.each do |name| %>
+        <button class="btn btn-primary" type="submit"><%= name %></button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
     <div class="row" style="margin-top: 50px" >
     <% @photos.each do |photo| %>
@@ -10,8 +30,21 @@
           </div>
         </div>
         <div class="card-body">
-          <%= link_to("See Photo", photo_path(photo), class: "card-link") %>
+          <%# byebug %>
+          <%= link_to "See Photo", photo_url(photo), class: "card-link" %>
         </div>
       </div>
     </div>
     <%end%>
+  </div>
+</div>
+
+  <!-- <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><#= link_to '1', photos_path(:page => 1), class: "page-link" %></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav> -->

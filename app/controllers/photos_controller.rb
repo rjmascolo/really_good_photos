@@ -5,7 +5,12 @@ class PhotosController < ApplicationController
       redirect_to root_path
     else
       @user = User.find_by(id: session[:user_id])
-      @photos = @user.get_photo_info
+      if params[:q]
+        byebug
+        @photos = Geocoder
+      else
+        @photos = @user.get_photo_info
+      end
     end
   end
 

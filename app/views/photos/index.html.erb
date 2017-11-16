@@ -1,25 +1,22 @@
 
-  <div class="row">
-  <% @photos.each do |photo| %>
-    <div class="col-sm-6">
+<div class="container">
+    <div class="row" style="margin-top: 50px" >
+    <% @photos.each do |photo| %>
+    <div class="col-md-4" style="margin-bottom: 10px">
       <div class="card">
         <div class="card-block">
-        <img class="card-img-top" src="<%= photo["image_url"] %>" alt="Card image cap">
+        <img class="card-img-top img_thumbnail" src="<%= photo.image_url %>" alt="<%= photo.name %>">
           <div class="card-body">
             <h4 class="card-title"><%=photo.name%></h4>
-            <p class="card-text"><%=photo.description%></p>
           </div>
         </div>
-
         <div class="card-body">
-          <p><%= link_to "photo link", photo_path(photo) %></p>
+          <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+          <%= link_to("See Photo", photo_path(photo), class: "card-link") %>
         </div>
       </div>
     </div>
-  <% end %>
-</div>
-
-
+    <%end%>
   <!-- <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="page-item"><a class="page-link" href="#">Previous</a></li>

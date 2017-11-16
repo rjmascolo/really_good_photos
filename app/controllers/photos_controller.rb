@@ -16,7 +16,6 @@ class PhotosController < ApplicationController
       @user = User.find_by(id: session[:user_id])
       @photo = Photo.find(params[:id])
     end
-    #code
   end
 
   private

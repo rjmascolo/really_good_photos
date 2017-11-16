@@ -9,8 +9,11 @@ class PhotosController < ApplicationController
         location = Geocoder.search(params[:q])
         coordinates = location[0].data["geometry"]["location"]
         @photos = @user.get_photos(coordinates["lng"], coordinates["lat"])
+        @category_name_array = @photos.map{|photo| photo.category.name}.uniq
       else
+        # byebug
         @photos = @user.get_photos(@user.longitude,@user.latitude)
+        @category_name_array = @photos.map{|photo| photo.category.name}.uniq
       end
     end
   end

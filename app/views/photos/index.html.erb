@@ -1,3 +1,15 @@
+<div class="jumbotron jumbotron-fluid"
+  <div class="container">
+    <h1 class="display-3">Photos in your area</h1>
+    <p class="lead">These are all of the photos taken in your area, <%= @user.home_location %>.</p>
+  </div>
+</div>
+
+<%= form_tag("/photos", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
 
 <div class="container">
     <div class="row" style="margin-top: 50px" >

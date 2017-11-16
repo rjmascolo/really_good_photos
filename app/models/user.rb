@@ -15,35 +15,24 @@ class User < ApplicationRecord
     end
   end
 
-  def get_photos
+  def get_photos(longitude, latitude)
 
-    base_url = 'https://api.500px.com/v1/photos/search?geo=' + self.latitude.to_s + ',' + self.longitude.to_s + ',5km&rpp100&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e'
-    raw_data = RestClient.get(base_url)
-    category_data = JSON.parse(raw_data)
-    photos_array = []
-    category_data['photos'].each do |category|
-      photos_array << category
+  base_url = 'https://api.500px.com/v1/photos/search?&geo=' + latitude.to_s + ',' + longitude.to_s + ',5km&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e'
+  category_data = JSON.parse(RestClient.get(base_url))
+  photos_array = []
+  category_data['photos'].each do |category|
+    photos_array << Photo.find_or_create_by(photo_id: category['id'],
+      name: category['name'],
+      description: category['description'],
+      longitude: category['longitude'],
+      latitude: category['latitude'],
+      taken_at: category['taken_at'],
+      category_id: category['category'].to_i,
+      location: category['location'],
+      rating: category['rating'],
+      image_url: category['image_url'])
     end
     photos_array
-    # byebug
-  end
-
-  def get_photo_info
-    photos = get_photos
-    final = photos.map do |photo|
-      photo_info = Photo.find_or_create_by(photo_id: photo['id'])
-      photo_info.name = photo['name']
-      photo_info.description = photo['description']
-      photo_info.category_id = photo['category'].to_i
-      photo_info.taken_at = photo['taken_at']
-      photo_info.location = photo['location']
-      photo_info.latitude = photo['latitude']
-      photo_info.longitude = photo['longitude']
-      photo_info.rating = photo['rating']
-      photo_info.image_url = photo['image_url']
-      photo_info.save
-      photo_info
-    end
   end
 
 end

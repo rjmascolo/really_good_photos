@@ -1,22 +1,17 @@
-
-  <div class="row">
-  <% @photos[0..3].each do |photo| %>
-    <div class="col-sm">
-      <div class="card" style="width: 20rem;">
-        <img class="card-img-top" src="<%= photo["image_url"] %>" alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<div class="container">
+    <div class="row" style="margin-top: 50px" >
+    <% @photos.each do |photo| %>
+    <div class="col-md-4" style="margin-bottom: 10px">
+      <div class="card">
+        <div class="card-block">
+        <img class="card-img-top img_thumbnail" src="<%= photo.image_url %>" alt="<%= photo.name %>">
+          <div class="card-body">
+            <h4 class="card-title"><%=photo.name%></h4>
+          </div>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
         <div class="card-body">
-          <%= link_to "photo link", photo_path(photo) %>
-          <a href="#" class="card-link">Another link</a>
+          <%= link_to("See Photo", photo_path(photo), class: "card-link") %>
         </div>
       </div>
-  <% end %>
-  </div>
+    </div>
+    <%end%>

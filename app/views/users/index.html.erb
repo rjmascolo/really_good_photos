@@ -6,10 +6,10 @@
   </div>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row" >
     <% if @user.photos.count > 0 %>
     <% @user.photos.each do |photo| %>
-    <div class="col-sm-6">
+    <div class="col-sm-4", style="margin-bottom: 30px">
       <div class="card">
         <div class="card-block">
         <img class="card-img-top" src="<%= photo.image_url %>" alt="<%= photo.name %>">
@@ -18,9 +18,8 @@
           </div>
         </div>
         <div class="card-body">
-          <p><%= link_to "photo link", photo_path(photo) %></p>
-          <a href="<%= photo.image_url %>" class="card-link">See Photo</a>
-          <%= link_to "Unsave", users_path, class = "btn btn-danger" style = "float" :method => 'delete' %>
+          <%= link_to "Photo link", photo_path(photo), class: "btn btn-primary" %>
+          <%= link_to "Unsave", usersphoto_path(photo), method: :delete, class: "btn btn-primary" %>
         </div>
       </div>
     </div>

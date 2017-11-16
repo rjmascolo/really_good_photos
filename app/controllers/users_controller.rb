@@ -29,13 +29,13 @@ class UsersController < ApplicationController
     @photos = @user.get
   end
 
-  def destroy
-    user = User.find(session[:user_id])
-    @photo = Photo.find(params[:id])
-    userphoto = Usersphoto.find_by(user_id: session[:user_id], photo_id: params[:id])
-    userphoto.destroy
-    redirect_to root_path
-  end
+  # def destroy
+  #   @user = User.find(session[:user_id])
+  #   @photo = Photo.find(params[:id])
+  #   userphoto = Usersphoto.find_by(user_id: session[:user_id], photo_id: params[:id])
+  #   userphoto.destroy
+  #   redirect_to root_path
+  # end
 
   private
 

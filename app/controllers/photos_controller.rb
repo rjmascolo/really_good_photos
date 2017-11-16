@@ -6,10 +6,11 @@ class PhotosController < ApplicationController
     else
       @user = User.find_by(id: session[:user_id])
       if params[:q]
-        byebug
-        @photos = Geocoder
+        location = Geocoder.search(params[:q])
+        coordinates = location[0].data["geometry"]["location"]
+        @photos = @user.get_photos(coordinates["lng"], coordinates["lat"])
       else
-        @photos = @user.get_photo_info
+        @photos = @user.get_photos(@user.longitude,@user.latitude)
       end
     end
   end

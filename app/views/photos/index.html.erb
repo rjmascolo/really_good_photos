@@ -23,10 +23,9 @@
             <h4 class="card-title"><%=photo.name%></h4>
           </div>
 
-
         </div>
         <div class="card-body">
-          
+          <%= link_to("See Photo", photo_path(photo), class: "card-link") %>
         </div>
       </div>
     </div>

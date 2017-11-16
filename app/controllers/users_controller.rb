@@ -11,7 +11,8 @@ class UsersController < ApplicationController
       flash[:notice] = "You are logged in!"
       redirect_to photos_path
     else
-      flash[:notice] = "Not a valid user! Please log in."
+
+      flash[:notice] = @user.errors.full_messages
       render :new
     end
   end

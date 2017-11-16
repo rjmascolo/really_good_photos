@@ -1,10 +1,16 @@
-
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-3">Your Saved Photos</h1>
     <p class="lead">Below are all of your saved photos, <%= @user.name %>.</p>
   </div>
 </div>
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <div class="container">
     <div class="row" >
     <% if @user.photos.count > 0 %>
@@ -18,14 +24,19 @@
           </div>
         </div>
         <div class="card-body">
+<<<<<<< HEAD
           <%= link_to "Photo link", photo_path(photo), class: "btn btn-primary" %>
           <%= link_to "Unsave", usersphoto_path(photo), method: :delete, class: "btn btn-primary" %>
+=======
+          <%= link_to "See Photo", photo_path(photo) %>
+          <a href="#" class="btn btn-danger" style="float: right;">Unsave</a>
+>>>>>>> a459d8cc5173b9263f50618b1f36258ce2063e04
         </div>
       </div>
     </div>
     <% end %>
   <% else %>
     <div class="alert alert-primary" role="alert">
-      You don't have any photos saved yet. <a href="'/photos'"> Look at your local photos</a> and save them.
+      You don't have any photos saved yet. <a href='/photos'> Look at your local photos</a> and save them.
     </div>
   <% end %>

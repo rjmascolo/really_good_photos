@@ -25,6 +25,7 @@ class User < ApplicationRecord
       photos_array << category
     end
     photos_array
+    # byebug
   end
 
   def get_photo_info

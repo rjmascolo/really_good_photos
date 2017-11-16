@@ -19,7 +19,6 @@ class PhotosController < ApplicationController
     #code
   end
 
-
   private
   def photo_params
     params.require(:photo).permit(:name, :description, :longitude, :latitude, :taken_at, :category_id, :location, :rating, :image_url)

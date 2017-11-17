@@ -7,6 +7,13 @@
 
 <div class="form-group container">
   <div class="col-sm sign-up">
+  <% if flash.now[:notice] %>
+    <% flash.now[:notice].each do |error| %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+    <% end %>
+  <% end %>
   <%= form_for @user do |f|  %>
     <%= f.label :name, "Name", class:"col-form-label" %> <br>
     <%= f.text_field :name, class:"form-control" %> <br>

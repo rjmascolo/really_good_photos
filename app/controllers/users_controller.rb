@@ -20,6 +20,12 @@ class UsersController < ApplicationController
   def index
     if session[:user_id]
       @user = User.find(session[:user_id])
+      @categories = @user.photos.map{|photo| photo.category}.uniq
+      if params[:category_id]
+        @photos = @user.photos.select{|photo| photo.category_id == params[:category_id].to_i}
+      else
+        @photos = @user.photos
+      end
     else
       redirect_to root_path
     end

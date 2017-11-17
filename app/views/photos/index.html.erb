@@ -4,7 +4,7 @@
       <p class="lead">These are all of the photos taken in your area, <%= params[:category] && params[:category][:q] ? params[:category][:q] : @user.home_location %>.</p>
         <%= form_for :category, url: photos_path, method: "get" do |f| %>
         <%= f.label "Search for:", for: :q, class: "lead" %>
-        <%= f.text_field :q %>
+        <%= f.text_field :q, :placeholder => 'New Location' %>
         <%= f.submit "Search", class: "lead"%>
         <% end %>
       <p class="lead">Categories:</p>
@@ -15,15 +15,20 @@
                 <%= f.hidden_field :category_filter, value: category %>
                 <%= f.hidden_field :q, value: (params[:category] ? params[:category][:q] : nil) %>
                 <button name="button" class="btn btn-primary" type="submit"><%= category %></button>
+                <%if @filtered%>
+                <a href="javascript:history.back()" class="btn btn-secondary btn-small">Go Back</a>
+                <%end%>
                 <% end %>
               </div>
             <% end %>
+            <div class="col" style="margin-top 20px">
+          </div>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <div class="row" style="margin-top: 50px" >
+  <div class="row" style="margin-top: 50px" >
     <% @photos.each do |photo| %>
     <div class="col-md-4" style="margin-bottom: 10px">
       <div class="card">
@@ -36,14 +41,6 @@
               </div>
           </div>
         </div>
-<<<<<<< HEAD
-        <div class="card-body">
-
-          <%= link_to "See Photo", photo_url(photo), class: "btn btn-primary" %>
-
-        </div>
-=======
->>>>>>> 83161b514ad4c224c4efd0498d9f5a1db147f906
       </div>
     </div>
     <%end%>

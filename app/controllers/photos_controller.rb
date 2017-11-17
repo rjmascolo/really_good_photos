@@ -20,6 +20,7 @@ class PhotosController < ApplicationController
           if params[:category]
             category = params[:category][:category_filter]
             @photos = @photos.select{|photo|photo.category.name == category}
+            @filtered = true
           end
         @category_name_array = @photos.map{|photo| photo.category.name}.uniq
       end

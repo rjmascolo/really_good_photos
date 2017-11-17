@@ -2,18 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+///// Nav bar /////
+
+.navbar-brand {
+  font-family: 'Pacifico', cursive;
+}
+
 .sign_up {
   width:50%
 }
 
 .category-filter {
-  float:right;
-  padding-right: 1em;
+
 }
 .right{
-  float:right
 }
 
 .photo_filter {
   width:100%
+}
+
+.justify-content-end {
+  padding-right:2em;
+}
+
+.filter {
+  padding-right:.3em
 }

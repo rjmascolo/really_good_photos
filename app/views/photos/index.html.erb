@@ -4,7 +4,7 @@
     <p class="lead">These are all of the photos taken in your area, <%= params[:q] ? params[:q] : @user.home_location %>.</p>
     <%= form_tag("/photos", method: "get") do %>
     <%= label_tag(:q, "Search for:") %>
-    <%= text_field_tag(:q) %>
+    <%= text_field_tag(:q)%>
     <%= submit_tag("Search")%>
     <% end %>
     <p class="lead">Categories</p>
@@ -30,12 +30,9 @@
           </div>
         </div>
         <div class="card-body">
-<<<<<<< HEAD
-          <%# byebug %>
-          <%= link_to "See Photo", photo_url(photo), class: "card-link" %>
-=======
 
->>>>>>> c6249856f83f7337acaa931539be442d1899ce5d
+          <%= link_to "See Photo", photo_url(photo), class: "btn btn-primary" %>
+
         </div>
       </div>
     </div>

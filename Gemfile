@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rest-client'
 
+gem 'f00px'
+
 gem 'geocoder'
 
 # Use Capistrano for deployment

@@ -16,8 +16,8 @@ class User < ApplicationRecord
   end
 
   def get_photos(longitude, latitude)
-
-  base_url = 'https://api.500px.com/v1/photos/search?&geo=' + latitude.to_s + ',' + longitude.to_s + ',5km&rpp=100&image_size=1080&nsfw=false&consumer_key=DB2deplzrgnIlMH2cbuon1UHMehzARqbW19R4I0e'
+  consumer_key = "KBLRhG0uNkC9go1ppC3C4JIMHdfaw0hVOad8rzb8"
+  base_url = 'https://api.500px.com/v1/photos/search?&geo=' + latitude.to_s + ',' + longitude.to_s + ',5km&rpp=100&image_size=1080&nsfw=false&consumer_key=' + consumer_key
   category_data = JSON.parse(RestClient.get(base_url))
   photos_array = []
   category_data['photos'].each do |category|

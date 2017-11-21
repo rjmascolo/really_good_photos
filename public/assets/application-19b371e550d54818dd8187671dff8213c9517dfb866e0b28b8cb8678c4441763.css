@@ -1,0 +1,45 @@
+/* line 5, /Users/ryanmascolo/Coding/flatiron_final_projects/really_good_photos/app/assets/stylesheets/photos.scss */
+.foobar {
+  float: right;
+  margin-right: -3em;
+}
+/* line 8, /Users/ryanmascolo/Coding/flatiron_final_projects/really_good_photos/app/assets/stylesheets/users.scss */
+.navbar-brand {
+  font-family: 'Pacifico', cursive;
+}
+
+/* line 12, /Users/ryanmascolo/Coding/flatiron_final_projects/really_good_photos/app/assets/stylesheets/users.scss */
+.sign_up {
+  width: 50%;
+}
+
+/* line 22, /Users/ryanmascolo/Coding/flatiron_final_projects/really_good_photos/app/assets/stylesheets/users.scss */
+.photo_filter {
+  width: 100%;
+}
+
+/* line 26, /Users/ryanmascolo/Coding/flatiron_final_projects/really_good_photos/app/assets/stylesheets/users.scss */
+.justify-content-end {
+  padding-right: 2em;
+}
+
+/* line 30, /Users/ryanmascolo/Coding/flatiron_final_projects/really_good_photos/app/assets/stylesheets/users.scss */
+.filter {
+  padding-right: 0.3em;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+

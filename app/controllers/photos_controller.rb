@@ -5,18 +5,19 @@ class PhotosController < ApplicationController
       redirect_to root_path
     else
       @user = User.find_by(id: session[:user_id])
-      if params[:category] && !params[:category][:q].blank?
-        # byebug
-        location = Geocoder.search(params[:category][:q])
+      if params[:category] && !params[:category][:location].blank?
+
+        location = Geocoder.search(params[:category][:location])
         coordinates = location[0].data["geometry"]["location"]
-        @photos = @user.get_photos(coordinates["lng"], coordinates["lat"])
+        radius = "#{params[:category][:radius]}#{params[:radius_metric]}"
+        @photos = @user.get_photos(coordinates["lng"], coordinates["lat"], radius)
           if params[:category][:category_filter]
             category = params[:category][:category_filter]
             @photos = @photos.select{|photo|photo.category.name == category}
           end
         @category_name_array = @photos.map{|photo| photo.category.name}.uniq
       else
-        @photos = @user.get_photos(@user.longitude,@user.latitude)
+        @photos = @user.get_photos(@user.longitude,@user.latitude, "1km")
           if params[:category]
             category = params[:category][:category_filter]
             @photos = @photos.select{|photo|photo.category.name == category}

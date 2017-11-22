@@ -6,3 +6,11 @@
   float:right;
   margin-right:-3em;
 }
+
+.category-padding {
+  margin-left: 2em;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+}

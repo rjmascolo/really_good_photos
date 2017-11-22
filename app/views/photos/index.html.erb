@@ -2,13 +2,7 @@
   <div class="container" >
     <h1 class="display-3">Photos in your area</h1>
       <p class="lead">These are all of the photos taken in your area, <%= params[:category] && params[:category][:q] ? params[:category][:q] : @user.home_location %>.</p>
-        <%= form_for :category, url: photos_path, method: "get" do |f| %>
-        <%= f.label "Search for:", for: :q, class: "lead" %>
-        <%= f.text_field :q, :placeholder => 'New Location' %>
-        <%= f.submit "Search", class: "lead"%>
-        <% end %>
-      <p class="lead">Categories:</p>
-        <div class="row" style="margin-top: 20px">
+        <!-- <div class="row" style="margin-top: 20px">
             <% @category_name_array.each do |category| %>
               <div class="col-" style="margin-top: 10px ; margin-right: 10px">
                 <%= form_for :category, url: photos_path, method: "get" do |f| %>
@@ -23,8 +17,36 @@
             <% end %>
             <div class="col" style="margin-top 20px">
           </div>
-        </div>
+        </div> -->
     </div>
+</div>
+<ul class="nav justify-content-end">
+  <li class="filter" >
+    <%= form_for :category, url: photos_path, method: "get" do |f| %>
+    <%= f.label "Search a different area:", for: :q, class: "lead" %>
+    <%= f.text_field :location, :placeholder => 'New Location' %>
+    <%= f.text_field :radius, :placeholder => 'Radius' %>
+    <%= select_tag(:radius_metric, options_for_select([ "km", "miles" ], "km")) %>
+    <%= f.submit "Search", class: "lead"%>
+    <% end %>
+  </li>
+</ul>
+
+<div class="category-padding" style="margin-top: 20px">
+    <% @category_name_array.each do |category| %>
+      <div class="col-" style="margin-top: 10px ; margin-right: 10px">
+        <%= form_for :category, url: photos_path, method: "get" do |f| %>
+        <%= f.hidden_field :category_filter, value: category %>
+        <%= f.hidden_field :q, value: (params[:category] ? params[:category][:q] : nil) %>
+        <button name="button" class="btn btn-primary" type="submit"><%= category %></button>
+        <%if @filtered%>
+        <a href="javascript:history.back()" class="btn btn-secondary btn-small">Go Back</a>
+        <%end%>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="col" style="margin-top 20px">
+  </div>
 </div>
 
 <div class="container">

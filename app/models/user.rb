@@ -15,10 +15,11 @@ class User < ApplicationRecord
     end
   end
 
-  def get_photos(longitude, latitude)
+  def get_photos(longitude, latitude, radius)
   consumer_key = ENV["PXAPI"]
+
   # consumer_secret = "zU5G5qGIow6814cd5PopVrf2vBhiKdi8a7nn8y70"
-  base_url = 'https://api.500px.com/v1/photos/search?&geo=' + latitude.to_s + ',' + longitude.to_s + ',5km&rpp=100&image_size=1080&nsfw=false&consumer_key=' + consumer_key
+  base_url = 'https://api.500px.com/v1/photos/search?&geo=' + latitude.to_s + ',' + longitude.to_s + ',' + radius.to_s + '&rpp=100&image_size=1080&nsfw=false&consumer_key=' + consumer_key
   category_data = JSON.parse(RestClient.get(base_url))
   photos_array = []
   category_data['photos'].each do |category|

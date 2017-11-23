@@ -1,40 +1,27 @@
 class PhotosController < ApplicationController
 
   def index
-    if !session[:user_id]
-      redirect_to root_path
-    else
+    User.logged_in?(session)
       @user = User.find_by(id: session[:user_id])
       if params[:category] && !params[:category][:location].blank?
-
-        location = Geocoder.search(params[:category][:location])
-        coordinates = location[0].data["geometry"]["location"]
-        radius = "#{params[:category][:radius]}#{params[:radius_metric]}"
-        @photos = @user.get_photos(coordinates["lng"], coordinates["lat"], radius)
-          if params[:category][:category_filter]
-            category = params[:category][:category_filter]
-            @photos = @photos.select{|photo|photo.category.name == category}
-          end
+        # takes in params returns lat and long and then retrives photos around the radius
+        @photos = Photo.search_location_cooridinates(params, @user)
+        params[:category][:category_filter] ? @photos = Photo.return_photos_based_on_category(params, @photos) : nil
         @category_name_array = @photos.map{|photo| photo.category.name}.uniq
       else
         @photos = @user.get_photos(@user.longitude,@user.latitude, "1km")
           if params[:category]
-            category = params[:category][:category_filter]
-            @photos = @photos.select{|photo|photo.category.name == category}
+            @photos = Photo.return_photos_based_on_category(params, @photos)
             @filtered = true
           end
         @category_name_array = @photos.map{|photo| photo.category.name}.uniq
       end
-    end
   end
 
   def show
-    if !session[:user_id]
-      redirect_to root_path
-    else
-      @user = User.find_by(id: session[:user_id])
-      @photo = Photo.find(params[:id])
-    end
+    User.logged_in?(session)
+    @user = User.find_by(id: session[:user_id])
+    @photo = Photo.find(params[:id])
   end
 
   private

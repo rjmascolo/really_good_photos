@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :email, uniqueness:true
   validates :password, length: { minimum: 7 }
 
-  def logged_in?
+  def self.logged_in?(session)
     if !session[:user_id]
       redirect_to root_path
     end

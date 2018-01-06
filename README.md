@@ -8,6 +8,6 @@ Really Good Photos grabs your address and then serves you photos have been taken
 
 This application is made using Ruby and HTML/CSS. The backend is running via Ruby on Rails, while the front end uses Rail's Active View feature and the CSS framework Bootstrap. It is also using two APIs, a photo sharing application called 500PX and then Google Maps.
 
-[Check it out!](hhttps://really-good-photos.herokuapp.com/)
+[Check it out!](https://really-good-photos.herokuapp.com/)
 
 ###### Contributors: Ryan Mascolo, Jordan Storms, Genevieve Costa ######

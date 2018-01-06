@@ -10,4 +10,6 @@ This application is made using Ruby and HTML/CSS. The backend is running via Rub
 
 [Check it out!](https://really-good-photos.herokuapp.com/)
 
+Note: The code is hoisted on a free Heroku account so it will take a few moments for it to boot up.
+
 ###### Contributors: Ryan Mascolo, Jordan Storms, Genevieve Costa ######

@@ -1,4 +1,5 @@
   <div class="container">
+
     <div class="row" style="margin-top: 50px">
       <div class="col-8"> <a href="<%= @photo.image_url %>"> <img class="card-img-top" src="<%= @photo.image_url %>" alt="<%= @photo.name %>"></a> </div>
         <div class="col-4 ">
@@ -10,8 +11,24 @@
                   <h4 class="card-title">Description:</h4>
                   <p class="card-text"><%= @photo.description %></p>
                 </div>
-                <div class="mx-auto" >
-                  <iframe src="http://maps.google.com/maps?q=<%= @photo.latitude %>, <%= @photo.longitude %>&output=embed" width="270" height="310" frameborder="0" style="border:0"></iframe>
+                <div id="map">
+                <script>
+                  function initMap() {
+                    var uluru = {lat: -25.363, lng: 131.044};
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 4,
+                      center: uluru
+                    });
+                    var marker = new google.maps.Marker({
+                      position: uluru,
+                      map: map
+                    });
+                  }
+                </script>
+                <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX7ozvqMa_8XDnN-3d8XaE6qjnHr_p73o&callback=initMap">
+                </script>
+                  <!-- <iframe src="http://maps.google.com/maps?q=<%= @photo.latitude %>, <%= @photo.longitude %>&output=embed" width="270" height="310" frameborder="0" style="border:0"></iframe> -->
                 </div>
                 <br>
 

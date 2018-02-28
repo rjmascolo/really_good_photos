@@ -33,7 +33,8 @@ class User < ApplicationRecord
       category: c,
       location: category['location'],
       rating: category['rating'],
-      image_url: category['image_url'])
+      image_url: category['image_url'].kind_of?(Array) ? category['image_url'][0] : category['image_url']
+      )
     end
     photos_array
     # byebug

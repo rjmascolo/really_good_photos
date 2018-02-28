@@ -9,12 +9,22 @@ class PhotosController < ApplicationController
         params[:category][:category_filter] ? @photos = Photo.return_photos_based_on_category(params, @photos) : nil
         @category_name_array = @photos.map{|photo| photo.category.name}.uniq
       else
+        if params[:current]
+          radius = "#{params[:current][:radius]}#{params[:radius_metric]}"
+          @photos = @user.get_photos(@user.longitude,@user.latitude, radius)
+          if params[:category]
+            @photos = Photo.return_photos_based_on_category(params, @photos)
+            @filtered = true
+          end
+        @category_name_array = @photos.map{|photo| photo.category.name}.uniq
+        else
         @photos = @user.get_photos(@user.longitude,@user.latitude, "1km")
           if params[:category]
             @photos = Photo.return_photos_based_on_category(params, @photos)
             @filtered = true
           end
         @category_name_array = @photos.map{|photo| photo.category.name}.uniq
+        end
       end
   end
 

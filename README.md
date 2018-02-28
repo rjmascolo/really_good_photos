@@ -1,24 +1,15 @@
-# README
+# Really Good Photos #
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### What is it? ###
 
-Things you may want to cover:
+Really Good Photos grabs your address and then serves you photos have been taken in your surrounding area. It is great for finding new cool locations that you have never seen before. The app hooks up to the Google Maps API and allows you to see the location the photo was taken at. Also, if you see any photos you like, you can save them to be apart of your own list. Or if you want to see photos that have been in other areas, you can use the search feature to look around.
 
-* Ruby version
+### How is it made? ###
 
-* System dependencies
+This application is made using Ruby and HTML/CSS. The backend is running via Ruby on Rails, while the front end uses Rail's Active View feature and the CSS framework Bootstrap. It is also using two APIs, a photo sharing application called 500PX and then Google Maps.
 
-* Configuration
+[Check it out!](https://really-good-photos.herokuapp.com/)
 
-* Database creation
+Note: The code is hoisted on a free Heroku account so it will take a few moments for it to boot up.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+###### Contributors: Ryan Mascolo, Jordan Storms, Genevieve Costa ######

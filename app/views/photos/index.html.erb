@@ -4,8 +4,8 @@
       <p class="lead">These are all of the photos taken in your area, <%= params[:category] && params[:category][:q] ? params[:category][:q] : @user.home_location %>.</p>
     </div>
 </div>
-<ul class="nav justify-content-end">
-  <li class="filter" >
+<div class="nav justify-content-end">
+  <div class="filter" >
     <%= form_for :category, url: photos_path, method: "get" do |f| %>
     <%= f.label "Search a different area:", for: :q, class: "lead" %>
     <%= f.text_field :location, :placeholder => 'New Location' %>
@@ -13,14 +13,17 @@
     <%= select_tag(:radius_metric, options_for_select([ "km", "miles" ], "km")) %>
     <%= f.submit "Search", class: "lead"%>
     <% end %>
+  </div>
+  <br/>
+  <div class="filter" >
+    <%= form_for :current, url: photos_path, method: "get" do |f| %>
+    <%= f.label "Change the radius:", for: :q, class: "lead" %>
+    <%= f.text_field :radius, :placeholder => 'Radius' %>
+    <%= select_tag(:radius_metric, options_for_select([ "km", "miles" ], "km")) %>
+    <%= f.submit "Search", class: "lead"%>
+    <% end %>
   </li>
-</ul>
-
-<%= form_for :current, url: photos_path, method: "get" do |f| %>
-<%= f.text_field :radius, :placeholder => 'Radius' %>
-<%= select_tag(:radius_metric, options_for_select([ "km", "miles" ], "km")) %>
-<%= f.submit "Search", class: "lead"%>
-<% end %>
+</div>
 
 <div class="category-padding" style="margin-top: 20px">
     <% @category_name_array.each do |category| %>
